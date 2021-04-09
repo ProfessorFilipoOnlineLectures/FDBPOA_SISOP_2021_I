@@ -12,7 +12,7 @@
 **  b) trabalhar com diferentes valores de N (tamanho de matrizes). feito o/
 **  c) permitir o funcionamento com matrizes que nao sejam quadradas.
 **
-*/ 
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,9 +22,9 @@ void MostraMatriz(int Altura, int Largura, int* M, char* Titulo)
 {
     int L, C; //Linha e Coluna
     printf(" %s \n", Titulo);
-    for(L = 0; L < Altura; L++) 
+    for(L = 0; L < Altura; L++)
     {
-        for(C = 0; C < Largura; C++) 
+        for(C = 0; C < Largura; C++)
         {
             printf(" %2d ", M[L * Altura + C]);
         }
@@ -36,7 +36,7 @@ void PreencheMatriz(int Altura, int Largura, int* M, int Valor)
 {
     int L, C; //Linha e Coluna
 
-    for(L = 0; L < Altura; L++) 
+    for(L = 0; L < Altura; L++)
     {
         for(C = 0; C < Largura; C++)
         {
@@ -50,11 +50,11 @@ int main()
 {
 
     int linhaA  = 0, colunaA = 0, linhaB  = 0, colunaB = 0, ab = 0 , at = 0 ;
-    
+
     printf("\n Automático? 0 ou 1");
     scanf("%d",&at);
-    
-    if(at = 1){
+
+    if(at == 1){
         linhaA  = 4, colunaA = 4, linhaB  = 4, colunaB = 4, ab = 1;
     }else{
         printf("\n Informe o número linhas da matriz A : ");
@@ -62,10 +62,10 @@ int main()
 
         printf("\n Informe o número colunas da matriz A : ");
         scanf("%d",&colunaA);
-    
+
         printf("\n Informe o número linhas da matriz B : ");
         scanf("%d",&linhaB);
-    
+
         printf("\n Informe o número colunas da matriz B : ");
         scanf("%d",&colunaB);
 
@@ -90,7 +90,7 @@ int main()
     int linhaC = linhaB;
     int colunaC = colunaA;
 
-    int* Mc = (int*)malloc(sizeof(int) * colunaC * linhaC);
+    int* Mc = (int*)malloc(sizeof(int) * linhaC * colunaC);
     if ( Mc == NULL )
     {
         printf("\nErro alocando memoria! \n");
@@ -111,32 +111,26 @@ int main()
 */
     int L, C, K;
 
-    if(ab == 1){
-    //C = A . B
-        printf("\n Aboragem 1\n ");
         for(L=0; L<linhaC; L++)
         {
             for(C=0; C<colunaC; C++)
             {
-                for(K=0; K<colunaA; K++)
-                {
-                    Mc[L * colunaC + C] += Ma[L * colunaA + K] * Mb[K * linhaB + C];
+                if(ab == 1){
+                    printf("\n Abordagem 1\n ");
+                    for(K=0; K <linhaC; K++)
+                    {
+
+                        Mc[L * colunaC + C] += Ma[L * colunaA + K] * Mb[K * linhaB + C];
+                    }
+                }else{
+                    printf("\n Abordagem 2\n ");
+                    for(K=0; K<colunaA; K++)
+                    {
+                        Mc[L * colunaC + C] += Ma[C * linhaA + K] * Mb[K * colunaB + L];
+                    }
                 }
             }
         }
-    }else{
-        printf("\n Aboragem 2\n ");
-        for(L=0; L<linhaC; L++)
-        {
-            for(C=0; C<colunaC; C++)
-            {
-                for(K=0; K<colunaA; K++)
-                {
-                    Mc[L * linhaC + C] += Ma[C * linhaA + K] * Mb[K * colunaB + L];
-                }
-            }
-        }
-    }
 
     MostraMatriz(linhaB, colunaA, Mc, " Matriz C ");
     return 0;
