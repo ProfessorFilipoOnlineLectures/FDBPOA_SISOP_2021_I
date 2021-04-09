@@ -5,7 +5,7 @@
 
 void exemploFork()
 {
-    if( fork() == 0 )
+    if( fork() != 0 )
     {
         printf("\n:: Pai \n");
     }
