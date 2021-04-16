@@ -1,33 +1,39 @@
 #include <stdio.h>
 
-#define MAX 16
+#define MAX 24
 
-void mostravetor(int v[]) {
+void mostravetor(int *v) {
 	int i, j;
+	// Aqui montamos os " XXX" para demarcar cada número
 	for (i = MAX-1; i >=0; i--) {
-	printf("|");
-	for (j = 0; j < MAX; j++) {
-		if (v[j] == i){
-			printf(" XXX");
-		}else{
-			printf("    ");
+		printf("|");
+		int aux = 0;
+		for (j = 0; j < MAX; j++) {
+			if (v[j] == i){
+				aux = v[j];
+				printf("%4d",aux);
+			}else{
+				printf("    ");
+			}
+			if(j == MAX-1){
+				printf(" | %2d",aux);
+			}
 		}
+		printf("\n");
 	}
-
-	printf("\n");
-	}
+	// Traços
 	for (j = 0; j <= 4* MAX; j++){ 
 		printf("-");    
 	}
+	// Começamos a exibição do vetor
 	printf("\n");
 	printf ("{  %2d", v[0]);
-
+	// Exibimos o conteúdo
 	for (i = 1; i < MAX; i++) {
 		printf (", %2d", v[i]);
 	}
-
+	// Fechamos a exibição
 	printf ("}\n");
-
 }
 
 void merge(int *v, int l, int m, int r){
@@ -69,7 +75,7 @@ void mergesort(int *v,int l,int r){
 
 int main(){
 	//
-	int vetor[MAX] = {13,7,2,5,9,11,4,15,0,10,1,12,6,14,3,8};
+	int vetor[] = {13,7,2,5,9,11,4,15,0,10,1,12,6,14,3,8,20,18,16,21,17,23,19,22};
 	//
 	mostravetor(vetor);
 	mergesort (vetor, 0, MAX-1);
