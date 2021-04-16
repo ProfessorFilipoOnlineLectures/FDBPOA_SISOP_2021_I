@@ -77,8 +77,11 @@ int main(){
 	//
 	int vetor[] = {13,7,2,5,9,11,4,15,0,10,1,12,6,14,3,8,20,18,16,21,17,23,19,22};
 	//
+	printf("\nVetor ainda não ordenado:\n");
 	mostravetor(vetor);
 	mergesort (vetor, 0, MAX-1);
+	printf("\nVetor ordenado:\n");
 	mostravetor(vetor);
+	printf("\n");
 	return 0;
 }
