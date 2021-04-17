@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <wait.h>
+#include <time.h>
 
 void insertionSort(int arr[], int n);
 void merge(int a[], int l1, int h1, int h2);
@@ -55,6 +57,8 @@ void mergeSort(int a[], int l, int h)
 	// Wait for child processes to finish
 	waitpid(lpid, &status, 0);
 	waitpid(rpid, &status, 0);
+	
+	sleep(5);
 
 	// Merge the sorted subarrays
 	merge(a, l, l+len/2-1, h);
@@ -167,7 +171,7 @@ int main()
 
 	// Using fixed size array. We can uncomment
 	// below lines to take size from user
-	int length = 10;
+	int length = 300;
 
 	/* printf("Enter No of elements of Array:");
 	scanf("%d",&length); */
