@@ -171,15 +171,4 @@ int main()
 
 	printf("\n::: %d objetos identificados!\n", qtObjetos);
 
-	// 7 0
-	//int qt = SegueTrilha(16, 14, Matriz, N, M, CabecaLista);
-	//MostraLista(CabecaLista);
-	//printf("\nInseriu %d elementos\n", qt);
-
-	/*if (ExisteNodo(5, 1, CabecaLista))
-	{
-		printf("Nodo [%d:%d] existe!\n", 5, 1);
-	}
-	else printf("Nodo não existe!\n"); */
-
 }
