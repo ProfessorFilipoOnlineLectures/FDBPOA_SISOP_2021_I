@@ -9,10 +9,12 @@
 #include <sys/types.h>
 #include <time.h> 
 
+
 int main(int argc, char *argv[])
 {
     int listenfd = 0, connfd = 0;
     struct sockaddr_in serv_addr; 
+    char* message;
 
     char sendBuff[1025];
     time_t ticks; 
@@ -28,15 +30,17 @@ int main(int argc, char *argv[])
     bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
 
     listen(listenfd, 10); 
-
+    int n_conexao = 0;
+    char buffer[1025];
     while(1)
     {
+        //ticks = time(NULL);
+        //snprintf(sendBuff, sizeof(sendBuff), "%.24s\r\n", ctime(&ticks));
+        //write(connfd, sendBuff, strlen(sendBuff));
         connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
 
-        ticks = time(NULL);
-        snprintf(sendBuff, sizeof(sendBuff), "%.24s\r\n", ctime(&ticks));
-        write(connfd, sendBuff, strlen(sendBuff));
-
+        snprintf(buffer, sizeof(sendBuff), "Você é a conexão %d !\n", n_conexao++);
+        write(connfd, buffer, strlen(buffer));
         close(connfd);
         sleep(1);
      }
