@@ -219,8 +219,10 @@ int main(void)
     int ultLinha = -1, ultColuna = -1;
     int Linha, Coluna, qt;
     int contObjetos = 0;
+    int metade = N/2 ;
 
-    for (Linha = 0; Linha < N; Linha++)
+    //for (Linha = 0; Linha < N; Linha++)
+    for (Linha = 0; Linha < metade; Linha++)
     {
         for (Coluna = 0; Coluna < M; Coluna++)
         {
@@ -234,6 +236,24 @@ int main(void)
             }
 
         }
+    }
+    
+        for (Linha = metade+1 ; Linha < N; Linha++)
+    {
+        for (Coluna = 0; Coluna < M; Coluna++)
+        {
+            qt = SegueTrilha(Linha, Coluna, Matriz, N, M, CabecaLista);
+            if (qt > 0)
+            {
+                //contObjetos++;
+                //printf(" %d", qt);
+                NodoObjeto_t* NovoObjeto = InsereNodoObjeto(CabecaListaObjetos, CabecaLista, qt);
+                MostraListaObjetos(NovoObjeto, contObjetos++);
+            }
+
+        }
+
+
         //printf("\n");
     }
     printf("\n:::: %d objetos identificados na matriz!\n", contObjetos);
