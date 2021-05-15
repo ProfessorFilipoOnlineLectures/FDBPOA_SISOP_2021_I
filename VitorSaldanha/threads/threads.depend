@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1621042010 source:/home/vitorsaldanha/projetos/projeto_teste_001/threads/main.c
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/ipc.h>
+	<unistd.h>
+	<wait.h>
+	<time.h>
+	<stdbool.h>
+
