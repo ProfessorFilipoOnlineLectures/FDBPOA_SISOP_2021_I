@@ -97,6 +97,7 @@ int main()
             int sobrou = 0;
             if (qtThreads == (i+1))
             {
+            //Pq algumas divisões sobram 1 e outras 2 exemplo  17/3 = 15 - 17 = 2 e 43/3 = 14 *3 = 42 -43 = 1
             sobrou = (int)ceil((length-(length/qtThreads)*qtThreads));
             printf("Sobrou %d",sobrou);
             }
