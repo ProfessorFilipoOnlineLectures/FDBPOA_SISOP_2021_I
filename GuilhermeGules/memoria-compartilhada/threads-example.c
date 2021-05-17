@@ -26,9 +26,17 @@ int SomaVetor(int *vetor) {
   return soma;
 }
 
-int SomaVetorGauss(int *vetor){
+int SomaVetorGauss(int *vetor) {
   int N = length;
   return (N * (N + 1)) / 2;
+}
+
+int SomaSegmentoVetor(int *vetor, int posInicial, int qt) {
+  int soma=0;
+  for(int i = posInicial; i < (posInicial+qt); i++) {
+      soma += vetor[i];
+  }
+  return soma;
 }
 
 int main() {
@@ -74,10 +82,11 @@ int main() {
         }
 
         if(newPID == 0) { // esse é o processo filho
+          int soma = SomaSegmentoVetor(shm_vetor, i * (length / qtdThreads), length / qtdThreads);
           /**
            * * getpid() retorna o ID do processo atual
            * */
-          printf("\n::Ola do processo[%d] %d. Soma do vetor: %d\n", i, getpid(), SomaVetorGauss(shm_vetor));
+          printf("\n::Ola do processo[%d] %d. Soma do vetor: %d ::: Soma segmento: %d\n", i, getpid(), SomaVetorGauss(shm_vetor), soma);
           processoPai = false;
           sleep(5);
           exit(0);
